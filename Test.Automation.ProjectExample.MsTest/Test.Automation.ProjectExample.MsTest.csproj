@@ -93,8 +93,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Runsettings.runsettings" />
-    <None Include="Testsettings.testsettings" />
+    <None Include="Runsettings.runsettings">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Testsettings.testsettings">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\packages\PhantomJS.2.1.1\tools\phantomjs\phantomjs.exe">
