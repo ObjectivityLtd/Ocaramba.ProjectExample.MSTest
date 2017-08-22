@@ -34,28 +34,28 @@ namespace Test.Automation.ProjectExample.MsTest.Tests
     /// </summary>
     [TestClass]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-    public class HerokuappTestsMsTest : ProjectTestBase
+    public class HerokuappTestsMsTest2 : ProjectTestBase
     {
         [TestMethod]
-        public void TickCheckboxTest()
+        public void PageSourceContainsCaseTest()
         {
-            var checkboxes = new InternetPage(this.DriverContext)
+            const string ExpectedText = "HTTP status codes are a standard set of numbers used to communicate from a web server";
+            var statusCodes = new InternetPage(this.DriverContext)
                 .OpenHomePage()
-                .GoToCheckboxesPage()
-                .TickCheckboxOne();
+                .GoToStatusCodesPage();
 
-            Assert.IsTrue(checkboxes.IsCheckmarkOneTicked, "Checkbox1 is unticked!");
+            Assert.IsTrue(statusCodes.IsTextExistedInPageSource(ExpectedText), "Text is not present!");
         }
 
         [TestMethod]
-        public void UnTickCheckboxTest()
+        public void JavaScriptClickTest()
         {
-            var checkboxes = new InternetPage(this.DriverContext)
-                .OpenHomePage()
-                .GoToCheckboxesPage()
-                .UnTickCheckboxTwo();
+            HttpCode200Page httpCode200 = new InternetPage(this.DriverContext)
+               .OpenHomePage()
+               .GoToStatusCodesPage()
+               .Click200();
 
-            Assert.IsFalse(checkboxes.IsCheckmarkTwoTicked, "Checkbox2 is ticked!");
+            Assert.IsTrue(httpCode200.IsHTTPCode200PageIsDisplayed(), "Code 200 was not clicked or page is not displayed.");
         }
     }
 }

@@ -34,28 +34,34 @@ namespace Test.Automation.ProjectExample.MsTest.Tests
     /// </summary>
     [TestClass]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-    public class HerokuappTestsMsTest : ProjectTestBase
+    public class HerokuappTestsMsTest4 : ProjectTestBase
     {
         [TestMethod]
-        public void TickCheckboxTest()
+        public void ClickFloatingMenuTest()
         {
-            var checkboxes = new InternetPage(this.DriverContext)
+            var floatingMenuPage = new InternetPage(this.DriverContext)
                 .OpenHomePage()
-                .GoToCheckboxesPage()
-                .TickCheckboxOne();
-
-            Assert.IsTrue(checkboxes.IsCheckmarkOneTicked, "Checkbox1 is unticked!");
+                .GoToFloatingMenu()
+                .ClickFloatingMenuButton();
+            Assert.IsTrue(floatingMenuPage.IsUrlEndsWith("#home"), "URL does not end with #home - probably 'Home' floating menu button was not clicked properly");
         }
 
+        [DeploymentItem("Objectivity.Test.Automation.MsTests\\DDT.xml")]
+        [DeploymentItem("Objectivity.Test.Automation.MsTests\\IEDriverServer.exe")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\DDT.xml", "credential", DataAccessMethod.Sequential)]
         [TestMethod]
-        public void UnTickCheckboxTest()
+        public void FormAuthenticationPageTest()
         {
-            var checkboxes = new InternetPage(this.DriverContext)
+            var formFormAuthentication = new InternetPage(this.DriverContext)
                 .OpenHomePage()
-                .GoToCheckboxesPage()
-                .UnTickCheckboxTwo();
+                .GoToFormAuthenticationPage();
 
-            Assert.IsFalse(checkboxes.IsCheckmarkTwoTicked, "Checkbox2 is ticked!");
+            formFormAuthentication.EnterUserName((string)this.TestContext.DataRow["user"]);
+            formFormAuthentication.EnterPassword((string)this.TestContext.DataRow["password"]);
+            formFormAuthentication.LogOn();
+            Verify.That(
+                this.DriverContext,
+                () => Assert.AreEqual((string)this.TestContext.DataRow["message"], formFormAuthentication.GetMessage));
         }
     }
 }
