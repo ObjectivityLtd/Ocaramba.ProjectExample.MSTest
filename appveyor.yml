@@ -4,6 +4,6 @@ before_build:
 build:
   verbosity: minimal
 artifacts:
-- path: '**\TestMsTest.log'
-- path: '**\*.png'
-- path: '**\*.html'
+- path: '.\Test.Automation.ProjectExample.MSTest\bin\Release\*.log'
+- path: '.\Test.Automation.ProjectExample.MSTest\bin\Release\*.png'
+- path: '.\Test.Automation.ProjectExample.MSTest\bin\Release\*.html'
