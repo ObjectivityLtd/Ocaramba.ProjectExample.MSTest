@@ -1,0 +1,9 @@
+version: 1.0.{build}
+before_build:
+- cmd: nuget restore
+build:
+  verbosity: minimal
+artifacts:
+- path: '**\Test.log'
+- path: '**\*.png'
+- path: '**\*.html'
