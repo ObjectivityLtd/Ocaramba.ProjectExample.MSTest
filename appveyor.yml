@@ -4,6 +4,6 @@ before_build:
 build:
   verbosity: minimal
 artifacts:
-- path: '**\Test.log'
+- path: '**\TestMsTest.log'
 - path: '**\*.png'
 - path: '**\*.html'
