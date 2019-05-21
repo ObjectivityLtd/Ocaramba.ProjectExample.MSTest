@@ -20,22 +20,22 @@
 //     SOFTWARE.
 // </license>
 
-namespace Objectivity.Test.Automation.Tests.MsTest
+namespace Ocaramba.Tests.MsTest
 {
     using System;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Objectivity.Test.Automation.Common;
-    using Objectivity.Test.Automation.Common.Logger;
+    using Ocaramba;
+    using Ocaramba.Logger;
 
     /// <summary>
-    /// The base class for all tests <see href="https://github.com/ObjectivityLtd/Test.Automation/wiki/ProjectTestBase-class">More details on wiki</see>
+    /// The base class for all tests <see href="https://github.com/ObjectivityLtd/Ocaramba/wiki/ProjectTestBase-class">More details on wiki</see>
     /// </summary>
     [TestClass]
     public class ProjectTestBase : TestBase
     {
-        private readonly DriverContext driverContext = new DriverContext();
+        private readonly DriverContext driverContext = new Ocaramba.DriverContext();
 
         /// <summary>
         /// Gets or sets logger instance for driver
@@ -93,11 +93,17 @@ namespace Objectivity.Test.Automation.Tests.MsTest
             this.DriverContext.IsTestFailed = this.TestContext.CurrentTestOutcome == UnitTestOutcome.Failed || !this.driverContext.VerifyMessages.Count.Equals(0);
             var filePaths = this.SaveTestDetailsIfTestFailed(this.driverContext);
             this.SaveAttachmentsToTestContext(filePaths);
+            var javaScriptErrors = this.DriverContext.LogJavaScriptErrors();
             this.DriverContext.Stop();
             this.LogTest.LogTestEnding(this.driverContext);
             if (this.IsVerifyFailedAndClearMessages(this.driverContext) && this.TestContext.CurrentTestOutcome != UnitTestOutcome.Failed)
             {
                 Assert.Fail("Look at stack trace logs for more details");
+            }
+
+            if (javaScriptErrors)
+            {
+                Assert.Fail("JavaScript errors found. See the logs for details");
             }
         }
 

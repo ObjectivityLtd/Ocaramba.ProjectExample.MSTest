@@ -21,11 +21,11 @@
 // </license>
 
 using NLog;
-using Objectivity.Test.Automation.Common;
-using Objectivity.Test.Automation.Common.Extensions;
-using Objectivity.Test.Automation.Common.Types;
-using Objectivity.Test.Automation.Common.WebElements;
-using Objectivity.Test.Automation.Tests.PageObjects;
+using Ocaramba;
+using Ocaramba.Extensions;
+using Ocaramba.Types;
+using Ocaramba.WebElements;
+using Ocaramba.Tests.PageObjects;
 
 namespace Test.Automation.ProjectExample.MsTest.PageObjects.TheInternet
 {

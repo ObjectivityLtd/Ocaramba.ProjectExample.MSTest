@@ -22,9 +22,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Objectivity.Test.Automation.Common;
-using Objectivity.Test.Automation.Tests.MsTest;
-using Objectivity.Test.Automation.Tests.PageObjects.PageObjects.TheInternet;
+using Ocaramba.Tests.MsTest;
 using Test.Automation.ProjectExample.MsTest.PageObjects.TheInternet;
 
 namespace Test.Automation.ProjectExample.MsTest.Tests

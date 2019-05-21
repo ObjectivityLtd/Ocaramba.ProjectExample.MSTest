@@ -20,12 +20,13 @@
 //     SOFTWARE.
 // </license>
 
-namespace Objectivity.Test.Automation.Tests.PageObjects.PageObjects.TheInternet
-{
-    using Objectivity.Test.Automation.Common;
-    using Objectivity.Test.Automation.Common.Extensions;
-    using Objectivity.Test.Automation.Common.Types;
+using Ocaramba;
+using Ocaramba.Extensions;
+using Ocaramba.Tests.PageObjects;
+using Ocaramba.Types;
 
+namespace Test.Automation.ProjectExample.MsTest.PageObjects.TheInternet
+{
     public class DisappearingElementsPage : ProjectPageBase
     {
         /// <summary>
