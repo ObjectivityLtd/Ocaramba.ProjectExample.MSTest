@@ -3,7 +3,13 @@ before_build:
 - cmd: nuget restore
 build:
   verbosity: minimal
-artifacts:
-- path: '.\Test.Automation.ProjectExample.MsTest\bin\Debug\*.log'
-- path: '.\Test.Automation.ProjectExample.MsTest\bin\Debug\*.png'
-- path: '.\Test.Automation.ProjectExample.MsTest\bin\Debug\*.html'
+after_test:
+- ps: >-
+    7z a testresults.zip .\Test.Automation.ProjectExample.MsTest\bin\Debug\**\*.png
+
+    7z a testresults.zip .\Test.Automation.ProjectExample.MsTest\bin\Debug\**\*.html
+
+    7z a testresults.zip .\Test.Automation.ProjectExample.MsTest\bin\Debug\**\*.log
+
+
+    appveyor PushArtifact testresults.zip
