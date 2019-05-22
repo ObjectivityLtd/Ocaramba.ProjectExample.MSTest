@@ -77,18 +77,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="PageObjects\TheInternet\AbTestingPage.cs" />
-    <Compile Include="PageObjects\TheInternet\CheckboxesPage.cs" />
-    <Compile Include="PageObjects\TheInternet\DisappearingElementsPage.cs" />
-    <Compile Include="PageObjects\TheInternet\FloatingMenuPage.cs" />
-    <Compile Include="PageObjects\TheInternet\FormAuthenticationPage.cs" />
-    <Compile Include="PageObjects\TheInternet\HttpCode200Page.cs" />
-    <Compile Include="PageObjects\TheInternet\InternetPage.cs" />
-    <Compile Include="PageObjects\TheInternet\StatusCodesPage.cs" />
+    <Compile Include="PageObjects\InternetPage.cs" />
     <Compile Include="ProjectPageBase.cs" />
     <Compile Include="ProjectTestBase.cs" />
-    <Compile Include="Tests\HerokuappTestsMsTest2.cs" />
-    <Compile Include="Tests\HerokuappTestsMsTest3.cs" />
     <Compile Include="Tests\HerokuappTestsMsTest1.cs" />
     <Compile Include="Tests\HerokuappTestsMsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

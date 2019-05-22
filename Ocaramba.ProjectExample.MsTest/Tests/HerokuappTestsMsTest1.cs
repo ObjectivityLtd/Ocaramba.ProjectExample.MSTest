@@ -23,7 +23,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ocaramba.Tests.MsTest;
-using Test.Automation.ProjectExample.MsTest.PageObjects.TheInternet;
+using Test.Automation.ProjectExample.MsTest.PageObjects;
 
 namespace Test.Automation.ProjectExample.MsTest.Tests
 {
@@ -31,29 +31,14 @@ namespace Test.Automation.ProjectExample.MsTest.Tests
     /// Tests to verify checkboxes tick and Untick.
     /// </summary>
     [TestClass]
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-    public class HerokuappTestsMsTest : ProjectTestBase
+    public class HerokuappTestsMsTest2 : ProjectTestBase
     {
         [TestMethod]
-        public void TickCheckboxTest()
+        public void PageSourceContainsCaseTest()
         {
-            var checkboxes = new InternetPage(this.DriverContext)
-                .OpenHomePage()
-                .GoToCheckboxesPage()
-                .TickCheckboxOne();
-
-            Assert.IsTrue(checkboxes.IsCheckmarkOneTicked, "Checkbox1 is unticked!");
-        }
-
-        [TestMethod]
-        public void UnTickCheckboxTest()
-        {
-            var checkboxes = new InternetPage(this.DriverContext)
-                .OpenHomePage()
-                .GoToCheckboxesPage()
-                .UnTickCheckboxTwo();
-
-            Assert.IsFalse(checkboxes.IsCheckmarkTwoTicked, "Checkbox2 is ticked!");
+            // TODO: Add your test code here
+            var statusCodes = new InternetPage(this.DriverContext)
+                .OpenHomePage();
         }
     }
 }

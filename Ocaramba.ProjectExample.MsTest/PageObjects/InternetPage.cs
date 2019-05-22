@@ -1,4 +1,4 @@
-﻿// <copyright file="AbTestingPage.cs" company="Objectivity Bespoke Software Specialists">
+﻿// <copyright file="InternetPage.cs" company="Objectivity Bespoke Software Specialists">
 // Copyright (c) Objectivity Bespoke Software Specialists. All rights reserved.
 // </copyright>
 // <license>
@@ -20,48 +20,52 @@
 //     SOFTWARE.
 // </license>
 
+using System;
+using System.Globalization;
+using NLog;
 using Ocaramba;
 using Ocaramba.Extensions;
-using Ocaramba.Types;
 using Ocaramba.Tests.PageObjects;
+using Ocaramba.Types;
 
-namespace Test.Automation.ProjectExample.MsTest.PageObjects.TheInternet
+namespace Test.Automation.ProjectExample.MsTest.PageObjects
 {
-    public class AbTestingPage : ProjectPageBase
+    public class InternetPage : ProjectPageBase
     {
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
         /// <summary>
         /// Locators for elements
         /// </summary>
-         private readonly ElementLocator
-            contentText = new ElementLocator(Locator.CssSelector, ".example > p");
+        private readonly ElementLocator
+            linkLocator = new ElementLocator(Locator.CssSelector, "a[href='/{0}']"),
+            basicAuthLink = new ElementLocator(Locator.XPath, "//a[contains(text(),'Auth')]");
 
-        public AbTestingPage(DriverContext driverContext)
+        public InternetPage(DriverContext driverContext)
             : base(driverContext)
         {
         }
 
-        public string GetDescriptionUsingBy
+        /// <summary>
+        /// Methods for this HomePage
+        /// </summary>
+        /// <returns>Returns HomePage</returns>
+        public InternetPage OpenHomePage()
         {
-            get
-            {
-                return this.Driver.FindElement(this.contentText.ToBy()).Text;
-            }
+            var url = BaseConfiguration.GetUrlValue;
+            this.Driver.NavigateTo(new Uri(url));
+            Logger.Info(CultureInfo.CurrentCulture, "Opening page {0}", url);
+            return this;
         }
 
-        public string GetDescription
-        {
-            get
-            {
-                return this.Driver.GetElement(this.contentText).Text;
-            }
-        }
+        /// <summary>
+        /// Methods for this HomePage
+        /// </summary>
+        /// <returns>Returns Homepage</returns>
 
-        public string GetDescriptionWithCustomTimeout
+        public void GoToPage(string page)
         {
-            get
-            {
-                return this.Driver.GetElement(this.contentText, BaseConfiguration.MediumTimeout).Text;
-            }
-        }
+            this.Driver.GetElement(this.linkLocator.Format(page)).Click();
+        }   
     }
 }

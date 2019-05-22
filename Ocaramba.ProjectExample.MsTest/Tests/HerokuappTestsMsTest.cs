@@ -23,7 +23,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ocaramba.Tests.MsTest;
-using Test.Automation.ProjectExample.MsTest.PageObjects.TheInternet;
+using Test.Automation.ProjectExample.MsTest.PageObjects;
 
 namespace Test.Automation.ProjectExample.MsTest.Tests
 {
@@ -32,28 +32,22 @@ namespace Test.Automation.ProjectExample.MsTest.Tests
     /// </summary>
     [TestClass]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-    public class HerokuappTestsMsTest2 : ProjectTestBase
+    public class HerokuappTestsMsTest : ProjectTestBase
     {
         [TestMethod]
-        public void PageSourceContainsCaseTest()
+        public void TickCheckboxTest()
         {
-            const string ExpectedText = "HTTP status codes are a standard set of numbers used to communicate from a web server";
-            var statusCodes = new InternetPage(this.DriverContext)
-                .OpenHomePage()
-                .GoToStatusCodesPage();
-
-            Assert.IsTrue(statusCodes.IsTextExistedInPageSource(ExpectedText), "Text is not present!");
+            // TODO: Add your test code here
+            var checkboxes = new InternetPage(this.DriverContext)
+                .OpenHomePage();
         }
 
         [TestMethod]
-        public void JavaScriptClickTest()
+        public void UnTickCheckboxTest()
         {
-            HttpCode200Page httpCode200 = new InternetPage(this.DriverContext)
-               .OpenHomePage()
-               .GoToStatusCodesPage()
-               .Click200();
-
-            Assert.IsTrue(httpCode200.IsHTTPCode200PageIsDisplayed(), "Code 200 was not clicked or page is not displayed.");
+            // TODO: Add your test code here
+            var checkboxes = new InternetPage(this.DriverContext)
+                .OpenHomePage();
         }
     }
 }
