@@ -1,3 +1,10 @@
 /TestResults
 /Test.Automation.ProjectExample.MsTest/obj
 /Test.Automation.ProjectExample.MsTest/bin
+/.vs/Ocaramba.ProjectExample.MsTest/v15
+/.vs/Test.Automation.ProjectExample.MsTest/v14
+/.vs/Test.Automation.ProjectExample.MsTest/v15
+/*.user
+/Ocaramba.ProjectExample.MsTest/bin/Debug
+/Ocaramba.ProjectExample.MsTest/obj/Debug
+/packages
